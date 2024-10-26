@@ -10,21 +10,21 @@ type CashMethods interface {
 	Delete(key string)
 }
 
-func (cash storage) Set(key string, value interface{}) {
+func (cash *storage) Set(key string, value interface{}) {
 	cash.db[key] = value
 }
 
-func (cash storage) Get(key string) (interface{}, bool) {
+func (cash *storage) Get(key string) (interface{}, bool) {
 	data, ok := cash.db[key]
 
 	return data, ok
 }
 
-func (cash storage) Delete(key string) {
+func (cash *storage) Delete(key string) {
 	delete(cash.db, key)
 }
 
 // NewCash create new cash storage
 func NewCash() CashMethods {
-	return storage{make(map[string]interface{})}
+	return &storage{make(map[string]interface{})}
 }
