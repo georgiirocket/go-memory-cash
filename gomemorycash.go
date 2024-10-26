@@ -22,7 +22,7 @@ func (cash storage) Delete(key string) {
 	delete(cash.db, key)
 }
 
-// New create new cash storage
-func New() CashMethods {
+// NewCash create new cash storage
+func NewCash() CashMethods {
 	return storage{make(map[string]interface{})}
 }
