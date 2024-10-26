@@ -1,4 +1,4 @@
-package memoryCash
+package gomemorycash
 
 type storage struct {
 	db map[string]interface{}
