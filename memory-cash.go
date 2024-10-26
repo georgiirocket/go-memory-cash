@@ -1,28 +1,28 @@
-package memory_cash
+package memoryCash
 
-type Storage struct {
+type storage struct {
 	db map[string]interface{}
 }
 
-type Methods interface {
+type methods interface {
 	Set(key string, value interface{})
 	Get(key string) interface{}
 	Delete(key string)
 }
 
-func (cash Storage) Set(key string, value interface{}) {
+func (cash storage) Set(key string, value interface{}) {
 	cash.db[key] = value
 }
 
-func (cash Storage) Get(key string) interface{} {
+func (cash storage) Get(key string) interface{} {
 	return cash.db[key]
 }
 
-func (cash Storage) Delete(key string) {
+func (cash storage) Delete(key string) {
 	delete(cash.db, key)
 }
 
 // New create new cash storage
-func New() Methods {
-	return Storage{make(map[string]interface{})}
+func New() methods {
+	return storage{make(map[string]interface{})}
 }
