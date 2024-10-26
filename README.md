@@ -25,11 +25,15 @@ func main() {
 	cash.Set("2", "tester")
 	cash.Set("3", []int{1, 2, 4})
 
-	//Get data
-	data := cash.Get("1")
-
 	//Delete data
 	cash.Delete("2")
+	
+	//Get data
+	data, ok := cash.Get("1")
+
+	if !ok {
+        fmt.Print("Key is not exit")
+	}
 
 	fmt.Print(data)
 }

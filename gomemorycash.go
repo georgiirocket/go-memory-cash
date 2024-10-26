@@ -6,7 +6,7 @@ type storage struct {
 
 type CashMethods interface {
 	Set(key string, value interface{})
-	Get(key string) interface{}
+	Get(key string) (interface{}, bool)
 	Delete(key string)
 }
 
@@ -14,8 +14,10 @@ func (cash storage) Set(key string, value interface{}) {
 	cash.db[key] = value
 }
 
-func (cash storage) Get(key string) interface{} {
-	return cash.db[key]
+func (cash storage) Get(key string) (interface{}, bool) {
+	data, ok := cash.db[key]
+
+	return data, ok
 }
 
 func (cash storage) Delete(key string) {
