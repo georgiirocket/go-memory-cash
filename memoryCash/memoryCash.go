@@ -4,7 +4,7 @@ type storage struct {
 	db map[string]interface{}
 }
 
-type methods interface {
+type CashMethods interface {
 	Set(key string, value interface{})
 	Get(key string) interface{}
 	Delete(key string)
@@ -23,6 +23,6 @@ func (cash storage) Delete(key string) {
 }
 
 // New create new cash storage
-func New() methods {
+func New() CashMethods {
 	return storage{make(map[string]interface{})}
 }
